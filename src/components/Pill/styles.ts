@@ -5,7 +5,7 @@
 
 export const pillStyles = {
     // Base du pill
-    base: "inline-block text-center justify-center gap-1 rounded-full font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2",
+    base: "inline-block text-center justify-center gap-1 rounded-md font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2",
 
     // Variantes de couleur
     variant: {

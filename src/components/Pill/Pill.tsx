@@ -16,6 +16,7 @@ export const Pill: React.FC<PillProps> = ({
     onRemove,
     disabled = false,
     className = '',
+    style,
     'aria-label': ariaLabel,
     'data-testid': dataTestId,
 }) => {
@@ -53,6 +54,7 @@ export const Pill: React.FC<PillProps> = ({
     return (
         <Component
             className={pillClasses}
+            style={style}
             onClick={isClickable ? handleClick : undefined}
             onKeyDown={isClickable ? handleKeyDown : undefined}
             aria-disabled={disabled}

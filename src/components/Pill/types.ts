@@ -15,6 +15,7 @@ export interface PillProps {
   onRemove?: () => void;
   disabled?: boolean;
   className?: string;
+  style?: React.CSSProperties;
   'aria-label'?: string;
   'data-testid'?: string;
 }
