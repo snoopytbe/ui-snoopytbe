@@ -4,6 +4,8 @@
  */
 
 import React from 'react';
+import { twMerge } from 'tailwind-merge';
+import { clsx } from 'clsx';
 import { pillStyles } from './styles';
 import type { PillProps } from './types';
 
@@ -41,14 +43,14 @@ export const Pill: React.FC<PillProps> = ({
         }
 
     };
-    const pillClasses = [
+    const pillClasses = twMerge(clsx(
         pillStyles.base,
         pillStyles.variant[variant],
         pillStyles.size[size],
         isClickable && pillStyles.clickable,
         disabled && pillStyles.disabled,
-        className,
-    ].filter(Boolean).join(' ');
+        className
+    ));
     const Component = isClickable ? 'div' : 'span';
 
     return (

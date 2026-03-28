@@ -22,5 +22,8 @@ export default defineConfig({
     '@radix-ui/react-toolbar',
     '@radix-ui/react-tooltip',
     'framer-motion',
-    'lucide-react'],
+    'lucide-react',
+    'tailwind-merge',
+    'clsx'
+  ],
 });

@@ -13,7 +13,7 @@ describe('Pill', () => {
         it('devrait utiliser la variante par défaut', () => {
             render(<Pill data-testid="pill">Test</Pill>);
             const pill = screen.getByTestId('pill');
-            expect(pill).toHaveClass('inline-block');
+            expect(pill).toHaveClass('inline-flex');
         });
 
         it('devrait utiliser la taille medium par défaut', () => {
@@ -255,7 +255,7 @@ describe('Pill', () => {
                 </Pill>
             );
             const pill = screen.getByTestId('pill');
-            expect(pill).toHaveClass('inline-block');
+            expect(pill).toHaveClass('inline-flex');
             expect(pill).toHaveClass('custom-class');
         });
     });

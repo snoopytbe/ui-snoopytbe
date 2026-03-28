@@ -81,14 +81,10 @@ export const SidePanel: React.FC<SidePanelProps> = ({
 
     return (
         <div className={sidePanelStyles.container}>
-            <motion.div
-                ref={panelRef}
-                className={`pointer-events-none flex ${positionClass} h-full absolute right-0`}
-                initial={{ x: width }}
-                animate={{ x: isOpen ? 0 : width }}
-                transition={{ type: "spring", damping: 25, stiffness: 200 }}
+            {/* Poignée : indépendante, toujours visible au bord droit */}
+            <div
+                className={`pointer-events-none absolute right-0 h-full flex ${positionClass}`}
             >
-                {/* Poignée (toujours visible) */}
                 <div
                     ref={handleRef}
                     className={`${sidePanelStyles.handle.base} ${handleColor}`}
@@ -105,7 +101,16 @@ export const SidePanel: React.FC<SidePanelProps> = ({
                 >
                     <span className={sidePanelStyles.handle.label}>{label}</span>
                 </div>
+            </div>
 
+            {/* Panneau de contenu : animé en translation, placé à gauche de la poignée */}
+            <motion.div
+                ref={panelRef}
+                className={`pointer-events-none absolute right-10 h-full flex ${positionClass}`}
+                initial={{ x: "calc(100% + 2.5rem)" }}
+                animate={{ x: isOpen ? 0 : "calc(100% + 2.5rem)" }}
+                transition={{ type: "spring", damping: 25, stiffness: 200 }}
+            >
                 {/* Contenu du panneau */}
                 <div
                     className={sidePanelStyles.panel.base}

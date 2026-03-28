@@ -20,9 +20,7 @@
     "noUnusedParameters": true
   },
   "include": [
-    "src",
-    "../zendays-vite/src/features/calendar/hooks/useDoubleCalendar.test.ts",
-    "../zendays-vite/src/features/calendar/hooks/useDoubleCalendar.ts"
+    "src"
   ],
   "exclude": [
     "node_modules",
