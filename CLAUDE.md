@@ -12,7 +12,7 @@ Chaque composant dans `src/components/ComponentName/` :
 - `styles.ts` — classes Tailwind (omis si composant délégateur pur)
 - `ComponentName.test.tsx` — tests unitaires
 
-Hooks dans `src/hooks/`. Styles partagés entre composants dans `src/styles/`.
+Hooks dans `src/hooks/`. Styles partagés entre composants dans `src/styles/`. Logique métier pure (optionnel) dans `src/services/`.
 
 ---
 
@@ -26,6 +26,8 @@ Hooks dans `src/hooks/`. Styles partagés entre composants dans `src/styles/`.
 | Types hook | `useHookName.types.ts` | `useContextMenu.types.ts` |
 | Styles locaux | `styles.ts` | `styles.ts` |
 | Styles partagés | `camelCaseStyles.ts` | `buttonStyles.ts` |
+| Service | `camelCase` + `Service` | `calendarCellService.ts` |
+| Tests | Nom source + `.test` | `BalanceCard.test.tsx` |
 
 ---
 
@@ -78,6 +80,18 @@ export const balanceCardStyles = {
 
 ---
 
+## Tests
+
+Co-localisation obligatoire : le fichier de test est toujours dans le même dossier que le fichier source.
+
+```bash
+npm test                  # tous les tests
+npx vitest --changed      # uniquement les fichiers modifiés
+npm run test:coverage     # couverture
+```
+
+---
+
 ## Checklist pré-commit
 
 Avant tout commit, vérifier :
@@ -96,6 +110,12 @@ npm run lint        # zéro avertissement
 ---
 
 ## Versioning et publication
+
+| Changement | Bump |
+|------------|------|
+| Correctif sans impact API | `patch` → `npm version patch` |
+| Nouvelle feature rétrocompatible | `minor` → `npm version minor` |
+| Changement cassant / suppression export | `major` → `npm version major` |
 
 - **Créer une entrée de changelog + bumper la version :**
   ```bash
