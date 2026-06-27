@@ -8,9 +8,9 @@ export const legendStyles = {
     pillText: "text-text-gray",
 
     /** Container principal du bouton */
-    pillContainer: "relative overflow-hidden inline-flex items-center justify-center px-3 py-1 rounded-full text-xs font-medium border border-gray-200 shadow-sm transition-all duration-300 hover:shadow-md cursor-pointer select-none",
+    pillContainer: "relative overflow-hidden inline-flex items-center justify-center px-3 py-1 rounded-full text-xs font-medium border border-gray-200 shadow-sm transition-all duration-300 hover:shadow-md cursor-pointer select-none dark:border-gray-700",
     /** Style pour un bouton désactivé (filtre) */
-    hidden: "bg-white",
+    hidden: "bg-white dark:bg-gray-800",
     /** Barre de progression en arrière-plan */
     backgroundBar: {
         base: "absolute inset-y-0 left-0 transition-all duration-500 ease-in-out h-full",
@@ -18,7 +18,7 @@ export const legendStyles = {
         planned: "",
     },
     /** Container pour le contenu (label + solde) */
-    content: "relative z-10 flex items-center justify-center w-full gap-2 text-gray-700 whitespace-nowrap",
+    content: "relative z-10 flex items-center justify-center w-full gap-2 text-gray-700 whitespace-nowrap dark:text-gray-300",
     /** Valeur du solde */
     value: "font-semibold whitespace-nowrap",
     /** Libellé du type de congé */

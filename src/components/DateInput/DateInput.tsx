@@ -1,7 +1,16 @@
+/**
+ * @fileoverview Composant DateInput - Champ de saisie de date
+ * @module ui/components/DateInput
+ */
+
 import React from "react";
 import { validationStyles, formStyles } from '../../styles';
 import type { DateInputProps } from "./types";
 
+/**
+ * Composant DateInput - Champ de saisie avec validation optionnelle
+ * @returns Champ de date HTML5 stylisé
+ */
 export const DateInput: React.FC<DateInputProps> = ({
     id,
     label,

@@ -4,9 +4,9 @@
  */
 
 import { describe, it, expect } from 'vitest';
-import type { BalanceStats } from './types';
 import { render, screen } from '@testing-library/react';
 import { BalanceCard } from './BalanceCard';
+import type { BalanceStats } from './types';
 
 describe('BalanceCard', () => {
     const mockStats: BalanceStats = {

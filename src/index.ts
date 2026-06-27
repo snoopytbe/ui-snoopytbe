@@ -4,6 +4,7 @@
 
 // Components
 export { ToastProvider } from './components/ToastProvider/ToastProvider';
+export { ThemeProvider } from './components/ThemeProvider/ThemeProvider';
 export { LoadingIndicator } from './components/LoadingIndicator/LoadingIndicator';
 export { ErrorBoundary } from './components/ErrorBoundary/ErrorBoundary';
 export { AppBar } from './components/AppBar/AppBar';
@@ -24,6 +25,7 @@ export { Legend } from './components/Legend/Legend';
 // Hooks
 export { useToast } from './hooks/useToast';
 export { useContextMenu } from './hooks/useContextMenu';
+export { useTheme } from './hooks/useTheme';
 
 // Styles
 export { dialogStyles } from './styles/dialogStyles';
@@ -35,6 +37,7 @@ export { selectStyles } from './styles/selectStyles';
 
 // Types
 export type { ToastState } from './components/ToastProvider/types';
+export type { Theme, ResolvedTheme, ThemeContextValue } from './components/ThemeProvider/types';
 export type { SidePanelProps } from './components/SidePanel/types';
 export type { AccordionSectionProps } from './components/AccordionSection/types';
 export type { NumberStepperProps } from './components/NumberStepper/types';

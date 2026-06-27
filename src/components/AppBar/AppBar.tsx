@@ -1,12 +1,17 @@
 /**
  * @fileoverview Barre d'application principale
- * @module AppBar
+ * @module ui/components/AppBar
  */
 
+import React from 'react';
 import * as Toolbar from '@radix-ui/react-toolbar';
 import { appBarStyles } from "./styles";
 import type { AppBarProps } from "./types";
 
+/**
+ * Barre d'application avec logo, contenu central et actions à droite
+ * @returns Barre d'application stylisée
+ */
 export const AppBar: React.FC<AppBarProps> = ({
     logo,
     rightActions,

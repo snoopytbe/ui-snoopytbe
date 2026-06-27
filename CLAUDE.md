@@ -86,6 +86,7 @@ Co-localisation obligatoire : le fichier de test est toujours dans le même doss
 
 ```bash
 npm test                  # tous les tests
+npm run test:watch       # mode watch (rechargement automatique)
 npx vitest --changed      # uniquement les fichiers modifiés
 npm run test:coverage     # couverture
 ```
@@ -100,8 +101,27 @@ Avant tout commit, vérifier :
 npm run typecheck   # zéro erreur TypeScript
 npm run build       # ESM, CJS et DTS générés sans erreur
 npm test            # tous les tests passent
-npm run lint        # zéro avertissement
+npm run lint        # ESLint (flat config), zéro avertissement
 ```
+
+Pour un développement itératif, les scripts `watch` permettent de relancer les commandes automatiquement lors de modifications :
+
+```bash
+npm run build:watch   # reconstruction automatique du bundle
+npm run test:watch    # réexécution des tests modifiés
+```
+
+`npm run lint` exécute ESLint (`eslint.config.js`, flat config) et fait respecter automatiquement :
+- pas d'`any` sans `// @ts-expect-error: raison` (description ≥ 10 caractères)
+- pas de `console.log` (seuls `warn`/`error` autorisés)
+- jamais d'`export default`
+- imports relatifs jamais à plus de 2 niveaux (`../../..` interdit)
+- `import type {}` toujours séparé des imports de valeurs
+- ordre des imports (natif → externe → interne → types)
+- fichiers < 300 lignes (hors fichiers `*.test.ts(x)`)
+- règles des hooks React (`rules-of-hooks`, `exhaustive-deps`)
+
+Reste vérifié manuellement / en revue de code : structure exacte des dossiers, JSDoc en français, co-localisation des tests.
 
 - Nouveaux exports ajoutés dans `src/index.ts`
 - JSDoc présent sur tous les exports publics

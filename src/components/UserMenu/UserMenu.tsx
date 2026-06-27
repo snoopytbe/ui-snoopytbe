@@ -1,6 +1,6 @@
 /**
- * @fileoverview Menu utilisateur
- * @module features/calendar/components/UserMenu
+ * @fileoverview Menu utilisateur déroulant
+ * @module ui/components/UserMenu
  */
 
 import * as React from 'react';
@@ -10,6 +10,10 @@ import type { UserMenuProps } from "./types";
 
 const defaultAvatar = 'https://www.gstatic.com/images/branding/product/1x/avatar_circle_blue_512dp.png';
 
+/**
+ * Menu utilisateur déroulant avec avatar et action de déconnexion
+ * @returns Menu utilisateur stylisé
+ */
 export const UserMenu: React.FC<UserMenuProps> = ({ user, onSignOut }) => {
     const [avatarSrc, setAvatarSrc] = React.useState(user?.picture || defaultAvatar);
     React.useEffect(() => {

@@ -1,6 +1,6 @@
 /**
  * @fileoverview Composant Pill - Badge/Pilule réutilisable
- * @module Pill
+ * @module ui/components/Pill
  */
 
 import React from 'react';
@@ -9,6 +9,10 @@ import { clsx } from 'clsx';
 import { pillStyles } from './styles';
 import type { PillProps } from './types';
 
+/**
+ * Composant Pill - Badge/Pilule avec variantes et état optionnel
+ * @returns Composant Pill stylisé
+ */
 export const Pill: React.FC<PillProps> = ({
     children,
     variant = 'default',

@@ -4,10 +4,10 @@
  */
 
 export const toastStyles = {
-    base: "fixed bottom-4 left-1/2 -translate-x-1/2 z-50 bg-white border border-gray-200 rounded-lg shadow-lg px-4 py-3 flex items-center gap-2 min-w-[300px]",
+    base: "fixed bottom-4 left-1/2 -translate-x-1/2 z-50 bg-white border border-gray-200 rounded-lg shadow-lg px-4 py-3 flex items-center gap-2 min-w-[300px] dark:bg-gray-800 dark:border-gray-700",
     viewport: "fixed bottom-0 left-0 flex flex-col p-4 gap-2 w-full max-w-sm z-50",
-    success: "text-green-600",
-    error: "text-red-600",
-    warning: "text-yellow-600",
-    info: "text-blue-600",
+    success: "text-green-600 dark:text-green-400",
+    error: "text-red-600 dark:text-red-400",
+    warning: "text-yellow-600 dark:text-yellow-400",
+    info: "text-blue-600 dark:text-blue-400",
 };

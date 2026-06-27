@@ -9,8 +9,8 @@
 export const balanceCardStyles = {
     consumedColor: 'bg-sky-500',
     plannedColor: 'bg-orange-400',
-    legendInitialBg: 'bg-white',
-    legendDefaultText: 'text-sm text-gray-500',
+    legendInitialBg: 'bg-white dark:bg-gray-800',
+    legendDefaultText: 'text-sm text-gray-500 dark:text-gray-400',
 } as const;
 
 /**
@@ -19,7 +19,7 @@ export const balanceCardStyles = {
  * @returns La classe Tailwind de la couleur de fond
  */
 export const getRemainingColorClass = (remaining: number): string => {
-    return remaining >= 0 ? 'bg-gray-200' : 'bg-red-500';
+    return remaining >= 0 ? 'bg-gray-200 dark:bg-gray-700' : 'bg-red-500';
 };
 
 /**
@@ -28,5 +28,5 @@ export const getRemainingColorClass = (remaining: number): string => {
  * @returns La classe Tailwind de la couleur du texte
  */
 export const getRemainingValueColorClass = (remaining: number): string => {
-    return remaining >= 0 ? 'text-sm text-gray-500' : 'text-sm text-red-500';
+    return remaining >= 0 ? 'text-sm text-gray-500 dark:text-gray-400' : 'text-sm text-red-500';
 };

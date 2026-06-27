@@ -1,12 +1,17 @@
 /**
  * @fileoverview Composant Select basé sur Radix UI pour une expérience unifiée
+ * @module ui/components/SelectField
  */
 
 import React from "react";
-import { selectStyles, validationStyles } from '../../styles';
 import * as Select from '@radix-ui/react-select';
+import { selectStyles, validationStyles } from '../../styles';
 import type { SelectFieldProps } from "./types";
 
+/**
+ * Composant Select avec support des erreurs et état désactivé
+ * @returns Champ sélectionné avec options
+ */
 export const SelectField: React.FC<SelectFieldProps> = ({
     id,
     label,

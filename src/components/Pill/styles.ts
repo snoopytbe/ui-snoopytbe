@@ -10,12 +10,12 @@ export const pillStyles = {
     // Variantes de couleur
     variant: {
         default: "",
-        primary: "bg-blue-100 text-blue-800 hover:bg-blue-200 focus:ring-blue-500",
-        secondary: "bg-gray-100 text-gray-800 hover:bg-gray-200 focus:ring-gray-500",
-        success: "bg-green-100 text-green-800 hover:bg-green-200 focus:ring-green-500",
-        warning: "bg-yellow-100 text-yellow-800 hover:bg-yellow-200 focus:ring-yellow-500",
-        error: "bg-red-100 text-red-800 hover:bg-red-200 focus:ring-red-500",
-        info: "bg-cyan-100 text-cyan-800 hover:bg-cyan-200 focus:ring-cyan-500",
+        primary: "bg-blue-100 text-blue-800 hover:bg-blue-200 focus:ring-blue-500 dark:bg-blue-900/40 dark:text-blue-300 dark:hover:bg-blue-900/60",
+        secondary: "bg-gray-100 text-gray-800 hover:bg-gray-200 focus:ring-gray-500 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600",
+        success: "bg-green-100 text-green-800 hover:bg-green-200 focus:ring-green-500 dark:bg-green-900/40 dark:text-green-300 dark:hover:bg-green-900/60",
+        warning: "bg-yellow-100 text-yellow-800 hover:bg-yellow-200 focus:ring-yellow-500 dark:bg-yellow-900/40 dark:text-yellow-300 dark:hover:bg-yellow-900/60",
+        error: "bg-red-100 text-red-800 hover:bg-red-200 focus:ring-red-500 dark:bg-red-900/40 dark:text-red-300 dark:hover:bg-red-900/60",
+        info: "bg-cyan-100 text-cyan-800 hover:bg-cyan-200 focus:ring-cyan-500 dark:bg-cyan-900/40 dark:text-cyan-300 dark:hover:bg-cyan-900/60",
     },
 
     // Tailles

@@ -1,12 +1,16 @@
 /**
- * @fileoverview PreviewCard component
- * @module PreviewCard
+ * @fileoverview Composant PreviewCard - Carte d'aperçu avec variantes
+ * @module ui/components/PreviewCard
  */
 
 import React from 'react';
 import { previewCardStyles } from './styles';
 import type { PreviewCardProps } from './types';
 
+/**
+ * Composant PreviewCard - Carte d'aperçu avec icône et variantes
+ * @returns Carte d'aperçu stylisée
+ */
 export const PreviewCard: React.FC<PreviewCardProps> = ({
     title,
     children,

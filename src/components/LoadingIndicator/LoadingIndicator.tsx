@@ -1,6 +1,6 @@
 /**
  * @fileoverview Indicateur de chargement par points animés
- * @module LoadingIndicator
+ * @module ui/components/LoadingIndicator
  */
 
 import React from "react";
@@ -11,6 +11,7 @@ import type { LoadingIndicatorProps } from "./types";
  * Indicateur de chargement par points animés
  * Accessible, moderne, stylé Tailwind
  * @example <LoadingIndicator />
+ * @returns Indicateur de chargement animé
  */
 export const LoadingIndicator: React.FC<LoadingIndicatorProps> = () => (
     <div

@@ -2,7 +2,6 @@
  * @fileoverview Contexte global pour les notifications Toast
  * @module contexts/ToastContext
  */
-/* eslint-disable react-refresh/only-export-components */
 
 import React, { createContext, useState, useCallback } from 'react';
 import * as Toast from '@radix-ui/react-toast';

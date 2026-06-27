@@ -3,12 +3,12 @@
  * @module ui/components/ErrorBoundary
  */
 
-import type { ReactNode } from 'react';
 import React, { Component } from 'react';
 import { ToastContext } from '../ToastProvider/ToastProvider';
-import type { ToastContextValue } from "../ToastProvider/types";
-import { errorBoundaryStyles } from "./styles";
-import type { ErrorBoundaryProps, ErrorBoundaryState } from "./types";
+import { errorBoundaryStyles } from './styles';
+import type { ReactNode } from 'react';
+import type { ToastContextValue } from '../ToastProvider/types';
+import type { ErrorBoundaryProps, ErrorBoundaryState } from './types';
 
 /**
  * Composant Error Boundary pour capturer les erreurs React

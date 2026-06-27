@@ -5,8 +5,8 @@
 
 import React from 'react';
 import { ProgressBarCard } from '../ProgressBarCard/ProgressBarCard';
-import type { ProgressBarSegment, ProgressBarLegendItem } from '../ProgressBarCard/types';
 import { balanceCardStyles, getRemainingColorClass, getRemainingValueColorClass } from './styles';
+import type { ProgressBarSegment, ProgressBarLegendItem } from '../ProgressBarCard/types';
 import type { BalanceCardProps } from './types';
 
 /**

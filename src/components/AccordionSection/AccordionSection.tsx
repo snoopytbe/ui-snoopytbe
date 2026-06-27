@@ -9,7 +9,8 @@ import { accordionStyles } from "./styles";
 import type { AccordionSectionProps } from "./types";
 
 /**
- * Section accordéon avec en-tête cliquable et contenu pliable.
+ * Section accordéon avec en-tête cliquable et contenu pliable
+ * @returns Section accordéon stylisée
  */
 export const AccordionSection: React.FC<AccordionSectionProps> = ({
     titre,
