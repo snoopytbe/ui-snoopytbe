@@ -4,7 +4,7 @@ model: claude-haiku-4-5-20251001
 
 # /update-docs
 
-Garde `CLAUDE.md` et `CONTRIBUTE.md` synchronisés avec le code actuel. À lancer après tout travail de feature significatif.
+Garde `CLAUDE.md`, `README.md` et `docs/components.md`synchronisés avec le code actuel. À lancer après tout travail de feature significatif.
 
 ## Usage
 
@@ -32,9 +32,9 @@ Garde `CLAUDE.md` et `CONTRIBUTE.md` synchronisés avec le code actuel. À lance
    ```
    Collecter tous les fichiers listés dans **source_files**.
 
-2. **Lire la doc actuelle** — `CLAUDE.md`, `CONTRIBUTE.md`, `README.md` (s'il existe).
+2. **Lire la doc actuelle** — `CLAUDE.md`, `README.md`, `docs/components.md` (s'ils existent).
 
-3. **Lire les fichiers source** — pour chaque fichier de **source_files**, en extraire les faits pertinents (nouveau composant, nouveau hook, nouvelle convention, nouvelle dépendance). En mode complet, signaler aussi : tout chemin mentionné dans la doc qui n'existe plus sur disque (référence obsolète).
+3. **Lire les fichiers source** — pour chaque fichier de **source_files**, en extraire les faits pertinents (nouveau composant, nouveau hook, nouvelle convention, nouvelle dépendance, props modifiées, types renommés). En mode complet, signaler aussi : tout chemin mentionné dans la doc qui n'existe plus sur disque (référence obsolète).
 
 4. **Appliquer la politique suivante :**
 
@@ -44,13 +44,18 @@ Garde `CLAUDE.md` et `CONTRIBUTE.md` synchronisés avec le code actuel. À lance
    - Règles strictes : ne pas dupliquer ce qu'ESLint (`eslint.config.js`) applique déjà automatiquement — seulement les règles encore manuelles
    - Checklist pré-commit / versioning : garder synchronisé avec les scripts réels de `package.json`
 
-   ### CONTRIBUTE.md
-   - Doit rester cohérent avec `CLAUDE.md` (mêmes conventions, mêmes commandes) — c'est la version détaillée destinée aux contributeurs externes
-   - Stack : mettre à jour les versions si `package.json` a changé
-   - Workflow de versioning/publication : doit refléter exactement les scripts `npm run change` / `npm run release` du `package.json`, jamais une commande `npm publish` divergente
-
-   ### README.md (si présent)
+   ### README.md (racine)
    - Garder en phase avec les exports publics de `src/index.ts`
+   - Mettre à jour le tableau des composants si un composant ou hook est ajouté ou supprimé
+
+   ### docs/components.md
+   - Pour chaque composant ou hook dans **source_files** : lire le fichier `types.ts` (ou `useHook.types.ts`) correspondant et mettre à jour la section concernée
+   - Props : ajouter les props nouvelles, supprimer celles qui n'existent plus, corriger les types ou valeurs par défaut qui ont changé
+   - Types exportés : maintenir les blocs `interface` / `type` inline en phase avec le code
+   - Exemples de code : les corriger si une prop a été renommée ou sa signature a changé
+   - Nouveau composant ou hook : créer une section complète (description, exemple minimal, tableau des props, types si nécessaire) et l'ajouter dans le Sommaire
+   - Composant ou hook supprimé : retirer sa section et la ligne du Sommaire
+   - Ne jamais réécrire une section qui n'a pas changé
 
 5. **Éditer uniquement ce qui a changé** — utiliser des appels Edit précis, pas de réécriture complète. Si une section est encore exacte, ne pas y toucher.
 

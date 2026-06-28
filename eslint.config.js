@@ -84,4 +84,11 @@ export default tseslint.config(
       "max-lines": "off",
     },
   },
+  {
+    // Storybook exige `export default meta` (CSF) — incompatible avec no-default-export
+    files: ["src/**/*.stories.{ts,tsx}"],
+    rules: {
+      "import/no-default-export": "off",
+    },
+  },
 );

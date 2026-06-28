@@ -7,6 +7,16 @@ export const sidePanelStyles = {
     // Conteneur principal (positionné fixed à droite)
     container: "fixed right-0 top-0 h-screen z-50 hidden sm:block",
 
+    // Wrapper animé (motion.div) commun à la poignée et au panneau
+    motionWrapper: "pointer-events-none absolute right-0 h-full flex",
+
+    // Classes de position verticale de la poignée
+    handlePosition: {
+        top: "items-start pt-4",
+        center: "items-center",
+        bottom: "items-end pb-4",
+    } as const,
+
     // Bande repliée / Poignée
     handle: {
         base: "pointer-events-auto relative z-10 h-44 w-10 bg-gradient-to-b shadow-lg cursor-pointer hover:w-11 transition-all duration-300 flex flex-col items-center justify-center rounded-l-xl border-y border-l border-white/30 dark:border-white/10",

@@ -7,6 +7,7 @@ export const userMenuStyles = {
   name: "text-sm font-medium text-gray-900 dark:text-gray-100",
   avatarButton: "flex items-center justify-center w-10 h-10 rounded-full overflow-hidden focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer",
   avatarImg: "w-full h-full object-cover",
+  avatarFallback: "w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center text-white text-sm font-semibold select-none",
   dropdown: "bg-white rounded-lg shadow-lg border border-gray-200 p-2 min-w-[200px] z-50 dark:bg-gray-800 dark:border-gray-700",
   dropdownHeader: "flex flex-col gap-1 px-3 py-2",
   dropdownName: "text-sm font-semibold text-gray-900 dark:text-gray-100",

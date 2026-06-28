@@ -12,12 +12,17 @@ import type { ToastState, ToastContextValue, ToastProviderProps } from './types'
 // CONTEXTE
 // ============================================================================
 
+/** Contexte React exposant la fonction d'affichage des notifications toast */
 export const ToastContext = createContext<ToastContextValue | undefined>(undefined);
 
 // ============================================================================
 // PROVIDER
 // ============================================================================
 
+/**
+ * Fournisseur de contexte pour les notifications toast.
+ * @returns Contexte toast encapsulant les composants enfants avec le rendu des notifications
+ */
 export const ToastProvider: React.FC<ToastProviderProps> = ({ children }) => {
     const [toast, setToast] = useState<ToastState>({
         open: false,
@@ -60,15 +65,11 @@ export const ToastProvider: React.FC<ToastProviderProps> = ({ children }) => {
                 <Toast.Root
                     open={toast.open}
                     onOpenChange={handleCloseToast}
-                    className={toastStyles.base}
+                    className={`${toastStyles.base} ${getSeverityClass()}`}
+                    role="status"
+                    aria-live="polite"
                 >
-                    <div
-                        className={getSeverityClass()}
-                        role="status"
-                        aria-live="polite"
-                    >
-                        {toast.message}
-                    </div>
+                    {toast.message}
                 </Toast.Root>
                 <Toast.Viewport className={toastStyles.viewport} />
             </Toast.Provider>

@@ -19,5 +19,8 @@ export const selectStyles = {
     error: "mt-1 text-xs text-red-600 dark:text-red-400",
 
     // Style pour les conteneurs
-    container: "space-y-1"
+    container: "space-y-1",
+
+    // Icône chevron du trigger
+    icon: "shrink-0",
 } as const;

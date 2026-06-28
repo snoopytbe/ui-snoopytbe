@@ -3,4 +3,7 @@
  */
  
 
-export type LoadingIndicatorProps = Record<string, never>;
+export interface LoadingIndicatorProps {
+    /** Mode plein écran avec overlay fixe (défaut : false) */
+    fullscreen?: boolean;
+}

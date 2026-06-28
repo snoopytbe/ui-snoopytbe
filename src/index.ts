@@ -21,6 +21,7 @@ export { UserMenu } from './components/UserMenu/UserMenu';
 export { BalanceCard } from './components/BalanceCard/BalanceCard';
 export { ControlCenter } from './components/ControlCenter/ControlCenter';
 export { Legend } from './components/Legend/Legend';
+export { ThemeToggle } from './components/ThemeToggle/ThemeToggle';
 
 // Hooks
 export { useToast } from './hooks/useToast';
@@ -46,3 +47,4 @@ export type { ProgressBarCardProps, ProgressBarSegment, ProgressBarLegendItem } 
 export type { BalanceCardProps, BalanceStats } from './components/BalanceCard/types';
 export type { ControlCenterProps, ControlCenterItem } from './components/ControlCenter/types';
 export type { LegendProps, LegendItem } from './components/Legend/types';
+export type { ThemeToggleProps } from './components/ThemeToggle/types';

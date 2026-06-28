@@ -66,10 +66,55 @@ describe('UserMenu', () => {
 
     it('devrait appeler onSignOut au clic sur déconnexion', async () => {
         render(<UserMenu {...defaultProps} />);
-        
+
         const signOutButton = screen.getByText('Déconnexion');
         fireEvent.click(signOutButton);
-        
+
         expect(defaultProps.onSignOut).toHaveBeenCalled();
+    });
+
+    it('devrait afficher les initiales quand aucune image n\'est disponible', () => {
+        render(<UserMenu user={{ given_name: 'Alice', email: 'alice@example.com', picture: '' }} onSignOut={vi.fn()} />);
+        expect(screen.getByText('A')).toBeInTheDocument();
+        expect(screen.queryByRole('img')).not.toBeInTheDocument();
+    });
+
+    it('devrait utiliser la première lettre de l\'email quand given_name est vide', () => {
+        render(<UserMenu user={{ given_name: '', email: 'bob@example.com', picture: '' }} onSignOut={vi.fn()} />);
+        expect(screen.getByText('B')).toBeInTheDocument();
+    });
+
+    it('devrait afficher "?" quand aucun nom ni email n\'est disponible', () => {
+        render(<UserMenu user={{ given_name: '', email: '', picture: '' }} onSignOut={vi.fn()} />);
+        expect(screen.getByText('?')).toBeInTheDocument();
+    });
+
+    it('devrait afficher les initiales si l\'image est en erreur', async () => {
+        render(<UserMenu {...defaultProps} />);
+        const img = screen.getByRole('img');
+        fireEvent.error(img);
+        expect(screen.queryByRole('img')).not.toBeInTheDocument();
+        expect(screen.getByText('J')).toBeInTheDocument();
+    });
+
+    it('devrait réafficher l\'image quand l\'URL de l\'avatar change après une erreur', () => {
+        const { rerender } = render(<UserMenu {...defaultProps} />);
+        fireEvent.error(screen.getByRole('img'));
+        expect(screen.queryByRole('img')).not.toBeInTheDocument();
+
+        rerender(<UserMenu
+            user={{ ...mockUser, picture: 'https://example.com/new-avatar.jpg' }}
+            onSignOut={vi.fn()}
+        />);
+        expect(screen.getByRole('img')).toBeInTheDocument();
+    });
+
+    it('devrait masquer le composant et loguer un avertissement quand user est absent', () => {
+        const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+        // @ts-expect-error: test du cas runtime user absent
+        const { container } = render(<UserMenu user={null} onSignOut={vi.fn()} />);
+        expect(container.firstChild).toBeNull();
+        expect(warnSpy).toHaveBeenCalledWith(expect.stringContaining('[UserMenu]'));
+        warnSpy.mockRestore();
     });
 });

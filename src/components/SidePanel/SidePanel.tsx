@@ -11,6 +11,7 @@ import type { SidePanelProps } from "./types";
 /**
  * Panneau latéral escamotable avec poignée et animation.
  * Basé sur le design du ControlCenter.
+ * @returns Panneau latéral animé avec poignée et contenu optionnel
  */
 export const SidePanel: React.FC<SidePanelProps> = ({
     children,
@@ -72,19 +73,18 @@ export const SidePanel: React.FC<SidePanelProps> = ({
 
     if (hidden) return null;
 
-    // Position verticale de la poignée
-    const positionClass = {
-        top: "items-start pt-4",
-        center: "items-center",
-        bottom: "items-end pb-4",
-    }[handlePosition];
+    const positionClass = sidePanelStyles.handlePosition[handlePosition];
 
     return (
         <div className={sidePanelStyles.container}>
-            {/* Poignée : indépendante, toujours visible au bord droit */}
-            <div
-                className={`pointer-events-none absolute right-0 h-full flex ${positionClass}`}
+            {/* Poignée + panneau réunis dans le même motion.div pour se déplacer ensemble */}
+            <motion.div
+                className={`${sidePanelStyles.motionWrapper} ${positionClass}`}
+                initial={{ x: "calc(100% - 2.5rem)" }}
+                animate={{ x: isOpen ? 0 : "calc(100% - 2.5rem)" }}
+                transition={{ type: "spring", damping: 25, stiffness: 200 }}
             >
+                {/* Poignée : bord gauche du bloc animé */}
                 <div
                     ref={handleRef}
                     className={`${sidePanelStyles.handle.base} ${handleColor}`}
@@ -101,18 +101,10 @@ export const SidePanel: React.FC<SidePanelProps> = ({
                 >
                     <span className={sidePanelStyles.handle.label}>{label}</span>
                 </div>
-            </div>
 
-            {/* Panneau de contenu : animé en translation, placé à gauche de la poignée */}
-            <motion.div
-                ref={panelRef}
-                className={`pointer-events-none absolute right-10 h-full flex ${positionClass}`}
-                initial={{ x: "calc(100% + 2.5rem)" }}
-                animate={{ x: isOpen ? 0 : "calc(100% + 2.5rem)" }}
-                transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            >
                 {/* Contenu du panneau */}
                 <div
+                    ref={panelRef}
                     className={sidePanelStyles.panel.base}
                     style={{ width }}
                 >

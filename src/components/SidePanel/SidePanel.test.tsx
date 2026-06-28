@@ -85,4 +85,37 @@ describe('SidePanel', () => {
         fireEvent.mouseDown(screen.getByTestId("outside"));
         expect(onToggle).toHaveBeenCalledWith(false);
     });
+
+    it('devrait appeler onToggle sur pression de la touche Entrée', () => {
+        const onToggle = vi.fn();
+        render(
+            <SidePanel {...defaultProps} onToggle={onToggle}>
+                <div>Content</div>
+            </SidePanel>
+        );
+        const handle = screen.getByRole('button', { name: /ouvrir le panneau/i });
+        fireEvent.keyDown(handle, { key: 'Enter' });
+        expect(onToggle).toHaveBeenCalledWith(true);
+    });
+
+    it('devrait appeler onToggle sur pression de la barre espace', () => {
+        const onToggle = vi.fn();
+        render(
+            <SidePanel {...defaultProps} onToggle={onToggle}>
+                <div>Content</div>
+            </SidePanel>
+        );
+        const handle = screen.getByRole('button', { name: /ouvrir le panneau/i });
+        fireEvent.keyDown(handle, { key: ' ' });
+        expect(onToggle).toHaveBeenCalledWith(true);
+    });
+
+    it('devrait rendre le footer quand il est fourni', () => {
+        render(
+            <SidePanel {...defaultProps} footer={<div>Footer content</div>}>
+                <div>Content</div>
+            </SidePanel>
+        );
+        expect(screen.getByText('Footer content')).toBeInTheDocument();
+    });
 });

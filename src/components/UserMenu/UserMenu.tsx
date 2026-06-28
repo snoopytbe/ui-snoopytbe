@@ -8,19 +8,33 @@ import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import { userMenuStyles } from "./styles";
 import type { UserMenuProps } from "./types";
 
-const defaultAvatar = 'https://www.gstatic.com/images/branding/product/1x/avatar_circle_blue_512dp.png';
+/** Retourne les initiales à partir du prénom et de l'e-mail */
+const getInitials = (givenName: string, email: string): string => {
+    if (givenName) return givenName.charAt(0).toUpperCase();
+    if (email) return email.charAt(0).toUpperCase();
+    return '?';
+};
 
 /**
  * Menu utilisateur déroulant avec avatar et action de déconnexion
  * @returns Menu utilisateur stylisé
  */
 export const UserMenu: React.FC<UserMenuProps> = ({ user, onSignOut }) => {
-    const [avatarSrc, setAvatarSrc] = React.useState(user?.picture || defaultAvatar);
+    const [imgError, setImgError] = React.useState(false);
     React.useEffect(() => {
-        setAvatarSrc(user?.picture || defaultAvatar);
+        setImgError(false);
     }, [user?.picture]);
-    const handleAvatarError = () => {
-        setAvatarSrc(defaultAvatar);
+
+    if (!user) {
+        console.warn('[UserMenu] Rendu sans utilisateur — composant masqué.');
+        return null;
+    }
+
+    const showImage = Boolean(user.picture) && !imgError;
+
+    const handleImageError = (): void => {
+        console.warn(`[UserMenu] Échec de chargement de l'avatar pour ${user.email || 'utilisateur inconnu'}.`);
+        setImgError(true);
     };
 
     return (
@@ -34,14 +48,20 @@ export const UserMenu: React.FC<UserMenuProps> = ({ user, onSignOut }) => {
                         tabIndex={0}
                         type="button"
                     >
-                        <img
-                            src={avatarSrc}
-                            alt={user?.email || 'Avatar utilisateur'}
-                            className={userMenuStyles.avatarImg}
-                            onError={handleAvatarError}
-                            crossOrigin="anonymous"
-                            referrerPolicy="no-referrer"
-                        />
+                        {showImage ? (
+                            <img
+                                src={user.picture}
+                                alt={user.email || 'Avatar utilisateur'}
+                                className={userMenuStyles.avatarImg}
+                                onError={handleImageError}
+                                crossOrigin="anonymous"
+                                referrerPolicy="no-referrer"
+                            />
+                        ) : (
+                            <span className={userMenuStyles.avatarFallback} aria-hidden="true">
+                                {getInitials(user.given_name, user.email)}
+                            </span>
+                        )}
                     </button>
                 </DropdownMenu.Trigger>
                 <DropdownMenu.Content
@@ -51,10 +71,10 @@ export const UserMenu: React.FC<UserMenuProps> = ({ user, onSignOut }) => {
                 >
                     <div className={userMenuStyles.dropdownHeader}>
                         <span className={userMenuStyles.dropdownName}>
-                            {user?.given_name || 'Utilisateur'}
+                            {user.given_name || 'Utilisateur'}
                         </span>
                         <span className={userMenuStyles.dropdownEmail}>
-                            {user?.email}
+                            {user.email}
                         </span>
                     </div>
                     <hr className={userMenuStyles.dropdownDivider} />

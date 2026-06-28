@@ -95,6 +95,43 @@ describe("ThemeContext", () => {
             expect(screen.getByTestId("theme")).toHaveTextContent("dark");
         });
 
+        it("doit retirer l'écouteur matchMedia lors du démontage en mode système", () => {
+            const removeEventListener = vi.fn();
+            const addEventListener = vi.fn();
+            window.matchMedia = vi.fn().mockReturnValue({
+                matches: false,
+                addEventListener,
+                removeEventListener,
+            });
+
+            const { unmount } = render(
+                <ThemeProvider defaultTheme="system">
+                    <div />
+                </ThemeProvider>
+            );
+
+            expect(addEventListener).toHaveBeenCalledWith("change", expect.any(Function));
+            unmount();
+            expect(removeEventListener).toHaveBeenCalledWith("change", expect.any(Function));
+        });
+
+        it("doit ne pas enregistrer l'écouteur matchMedia quand le thème est explicite", () => {
+            const addEventListener = vi.fn();
+            window.matchMedia = vi.fn().mockReturnValue({
+                matches: false,
+                addEventListener,
+                removeEventListener: vi.fn(),
+            });
+
+            render(
+                <ThemeProvider defaultTheme="light">
+                    <div />
+                </ThemeProvider>
+            );
+
+            expect(addEventListener).not.toHaveBeenCalled();
+        });
+
         it("doit changer de thème et persister le choix via setTheme", async () => {
             render(
                 <ThemeProvider>

@@ -13,9 +13,9 @@ import type { LoadingIndicatorProps } from "./types";
  * @example <LoadingIndicator />
  * @returns Indicateur de chargement animé
  */
-export const LoadingIndicator: React.FC<LoadingIndicatorProps> = () => (
+export const LoadingIndicator: React.FC<LoadingIndicatorProps> = ({ fullscreen = false }) => (
     <div
-        className={loadingStyles.containerEyeLevel} 
+        className={fullscreen ? loadingStyles.containerFullscreen : loadingStyles.containerInline}
         role="status"
         aria-label="Chargement en cours"
     >

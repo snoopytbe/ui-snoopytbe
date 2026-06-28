@@ -31,6 +31,13 @@ describe('SelectField', () => {
         expect(screen.getByText('Invalid selection')).toBeInTheDocument();
     });
 
-    // Interaction test might fail if resize observer or pointer capture is missing in JSDOM.
-    // We keep it minimal for compliance structure.
+    it('devrait afficher l\'astérisque quand required est vrai', () => {
+        render(<SelectField {...defaultProps} required />);
+        expect(screen.getByText('*')).toBeInTheDocument();
+    });
+
+    it('devrait rendre le composant sans astérisque quand required est faux', () => {
+        render(<SelectField {...defaultProps} />);
+        expect(screen.queryByText('*')).not.toBeInTheDocument();
+    });
 });
