@@ -19,3 +19,5 @@ Analyse les changements git en cours et crée un commit avec un message bien ré
 4. **Release** : `git add` (fichiers pertinents, pas de secrets) → `npm run release` (interactif : version, CHANGELOG, tag).
 
 5. **Commit simple** : `git add` → `git commit` via HEREDOC → demande si push → `git push` si confirmé.
+
+6. **Après le commit (toujours)** : `npm run build && yalc push` pour propager la version locale aux projets consommateurs.

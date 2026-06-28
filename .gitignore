@@ -4,4 +4,6 @@ dist/
 *.tsbuildinfo
 coverage/
 settings.local.json
+storybook-static/
+.playwright-mcp/
 
